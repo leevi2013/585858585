@@ -1,0 +1,39 @@
+name: Build Blue Gamba Mod
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Quellcode laden
+        uses: actions/checkout@v7
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle 8.6 einrichten
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.6'
+          cache-provider: basic
+
+      - name: Mod bauen
+        run: gradle --no-daemon clean build
+
+      - name: Mod-JAR hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: blue-gamba-fabric-minecraft-1.20.1
+          path: build/libs/blue-gamba-1.0.0.jar
+          if-no-files-found: error
