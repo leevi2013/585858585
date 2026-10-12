@@ -1,26 +1,8 @@
-{
-  "schemaVersion": 1,
-  "id": "blue_gamba",
-  "version": "${version}",
-  "name": "Blue Gamba",
-  "description": "Ein blaues Ore-Slot-Spiel mit internem Spielgeld und Einsatzschutz.",
-  "authors": [
-    "Blue Gamba contributors"
+"entrypoints": {
+  "main": [
+    "de.codex.bluegamba.BlueGambaMod"
   ],
-  "license": "MIT",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "de.codex.bluegamba.BlueGambaMod"
-    ],
-    "client": [
-      "de.codex.bluegamba.BlueGambaClient"
-    ]
-  },
-  "depends": {
-    "fabricloader": ">=0.15.11",
-    "minecraft": "1.20.1",
-    "java": ">=17",
-    "fabric-api": "*"
-  }
-}
+  "client": [
+    "de.codex.bluegamba.BlueGambaClient"
+  ]
+},
